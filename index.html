@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Palavras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <div class="game-header">
+                <h1>🎮 Jogo de Palavras</h1>
+                <div class="game-controls">
+                    <button id="sound-button" class="control-button">🔊</button>
+                    <button id="tutorial-button" class="control-button">❓</button>
+                </div>
+            </div>
+            <div class="level-buttons"></div>
+        </header>
+
+        <div class="game-info">
+            <select id="category-select" class="category-select"></select>
+            <div id="timer" class="timer">⏰ Tempo: 30s</div>
+            <div id="score" class="score">🌟 Pontos: 0</div>
+            <div id="streak-display" class="streak">🔥 Sequência: 0</div>
+            <div id="level-display" class="level">📊 Nível: fácil</div>
+        </div>
+
+        <div class="game-area">
+            <div id="word-container" class="word-container"></div>
+            <div id="letter-container" class="letter-container"></div>
+            <div id="message" class="message"></div>
+            <div id="attempts" class="attempts">Tentativas: 0</div>
+        </div>
+
+        <div class="game-buttons">
+            <button id="hint-button" class="game-button">💡 (3)</button>
+            <button id="check-button" class="game-button">✔️ Verificar</button>
+            <button id="next-button" class="game-button">➡️ Próxima</button>
+            <button id="show-answer-button" class="game-button" style="display: none;">👀 Mostrar Resposta</button>
+        </div>
+
+        <div id="achievements-area" class="achievements-area"></div>
+    </div>
+
+    <!-- Modal de Conquistas -->
+    <div id="achievement-modal" class="modal">
+        <div class="modal-content">
+            <span id="modal-close" class="close-button">&times;</span>
+            <div id="achievement-message"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Tutorial -->
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content tutorial">
+            <span id="tutorial-close" class="close-button">&times;</span>
+            <h2>📖 Como Jogar</h2>
+            <div class="tutorial-steps">
+                <p>1. Escolha uma categoria e nível</p>
+                <p>2. Organize as letras para formar a palavra correta</p>
+                <p>3. Clique nas letras para movê-las</p>
+                <p>4. Use dicas se precisar (custa pontos)</p>
+                <p>5. Complete antes do tempo acabar!</p>
+            </div>
+            <div class="tutorial-controls">
+                <p>⌨️ Controles do teclado:</p>
+                <p>ENTER - Verificar palavra</p>
+                <p>ESPAÇO - Próxima palavra</p>
+                <p>H - Usar dica</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container Principal */
+.game-container {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Cabeçalho */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #2d3436;
+    margin: 0;
+}
+
+/* Controles e Botões */
+.game-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.control-button:hover {
+    transform: scale(1.1);
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.level-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.level-btn.active {
+    background-color: #4ECDC4;
+    color: white;
+}
+
+/* Informações do Jogo */
+.game-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-select {
+    padding: 8px;
+    border-radius: 10px;
+    border: 2px solid #4ECDC4;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.timer, .score, .streak, .level {
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.time-warning {
+    color: #FF6B6B;
+    animation: pulse 1s infinite;
+}
+
+/* Área do Jogo */
+.game-area {
+    margin: 20px 0;
+}
+
+.word-container, .letter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 60px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.letter-box {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #4ECDC4;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+.letter-box:hover {
+    transform: scale(1.1);
+    background-color: #4ECDC4;
+    color: white;
+}
+
+.letter-box.hint {
+    background-color: #6C5CE7;
+    color: white;
+    animation: pulse 0.5s;
+}
+
+.letter-box.correct {
+    background-color: #4ECDC4;
+    color: white;
+}
+
+/* Mensagens */
+.message {
+    min-height: 50px;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #4ECDC4;
+}
+
+/* Botões do Jogo */
+.game-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.game-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4ECDC4;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.game-button:hover {
+    transform: scale(1.05);
+    background-color: #45b8b0;
+}
+
+.game-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Área de Conquistas */
+.achievements-area {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.achievement-badge {
+    width: 40px;
+    height: 40px;
+    background-color: #FFE66D;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: help;
+    transition: transform 0.3s;
+}
+
+.achievement-badge:hover {
+    transform: scale(1.1);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+    max-width: 90%;
+    width: 400px;
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+.modal-content.modal-enter {
+    animation: modalEnter 0.3s forwards;
+}
+
+.modal-content.modal-exit {
+    animation: modalExit 0.3s forwards;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+/* Tutorial */
+.tutorial-steps {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.tutorial-steps p {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.tutorial-controls {
+    text-align: left;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.tutorial-controls p {
+    margin: 5px 0;
+}
+
+/* Efeito Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+}
+
+/* Animações */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes modalEnter {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes modalExit {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.7); }
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-100vh) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .game-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .letter-box {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .game-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
